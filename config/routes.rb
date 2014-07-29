@@ -1,4 +1,7 @@
 Buffer::Application.routes.draw do
+  match '/auth/:provider/callback' => 'authentications#create', via: :get
+
+  resources :authentications
   devise_for :users
   get "pages/about"
   root "pages#home"

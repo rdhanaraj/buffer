@@ -1,6 +1,47 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <h3 class="panel-title">Configured Social Networks</h3>
+  </div>
+
+  <% @authentications = current_user.authentications if current_user %>
+
+  <div class="panel-body">
+  <% if !@authentications.blank? %>
+    <% for authentication in @authentications %>
+      <%= authentication.provider %><br>
+    <% end %>
+  <% else %>
+    No networks
+  <% end %>
+
+  <h4>Add a network </h4>
+  <table>
+    <td>
+    <%= button_to 'auth/twitter/', class: 'btn btn-primary' do %>
+      <i class="fa fa-facebook fa-lg"></i>   <br>Add Facebook account
+    <% end %>
+    </td>
+
+    <td>
+    <%= button_to 'auth/twitter/', class: 'btn btn-info' do %>
+      <i class="fa fa-twitter fa-lg"></i>   <br>Add Twitter account
+    <% end %> 
+    </td>
+
+    <td>
+    <%= button_to 'auth/twitter/', class: 'btn btn-danger' do %>
+      <i class="fa fa-google-plus fa-lg"></i>   <br>Add Google account
+    <% end %>
+    </td>
+  </table>
+
+<div class="clear"></div>
+  </div>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">Edit <%= resource_name.to_s.humanize %></h2>
   </div>
 
   <div class="panel-body">
@@ -23,13 +64,23 @@
       <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
       <%= f.password_field :current_password, class: 'form-control' %></div>
 
+      <br>
       <div><%= f.submit "Update", class: 'btn btn-primary' %></div>
     <% end %>
   </div>
 </div>
 
-<h3>Cancel my account</h3>
+<div class="panel panel-primary">
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+  <div class="panel-heading">
+    <h2 class="panel-title">Unhappy?</h2>
+  </div>
 
-<%= link_to "Back", :back %>
+  <div class="panel-body">
+    <p> <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "You sure bro?"}, :method => :delete, class: 'btn btn-danger' %></p>
+  </div>
+
+  <div class="panel-footer">
+    <%= link_to "Back", :back %>
+  </div>
+</div>

@@ -16,9 +16,15 @@ gem 'aws-sdk', '~> 1.16.1'
 gem 'multi_json', '~> 1.8.2'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'figaro'
+gem 'authbuttons-rails'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'nifty-generators'
 end
 
 group :production do
@@ -30,3 +36,5 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+gem "mocha", group: :test
